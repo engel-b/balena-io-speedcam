@@ -3,11 +3,7 @@ FROM balenalib/raspberry-pi-alpine-python
 RUN apk update
 RUN apk add git
 
-
-RUN cd /tmp
-RUN git clone https://github.com/pageauc/speed-camera.git
-
-RUN cd /tmp/speed-camera
+RUN git clone https://github.com/pageauc/speed-camera.git /tmp/speed-camera
 
 RUN mkdir -p /speed-camera/media
 RUN mkdir -p /speed-camera/plugins
