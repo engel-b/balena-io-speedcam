@@ -27,6 +27,24 @@ RUN chmod +x /speed-camera/*.py
 RUN chmod +x /speed-camera/*.sh
 RUN chmod -x /speed-camera/config*
 
+echo "$STATUS Installing speed-cam.py Dependencies"
+RUN apk add python-opencv \
+        dos2unix \
+        python-picamera \
+        python3-picamera \
+        python-imaging \
+        sqlite3 \
+        gnuplot \
+        python-gnuplot \
+        libgl1-mesa-dri \
+        fonts-freefont-ttf \
+        pandoc
+
+#   sudo apt-get install -yq Gnuplot
+#   sudo apt-get install -yq python-Gnuplot
+
+RUN dos2unix -q /speed-camera/*
+RUN rm -rf /tmp/speed-camera
 
 
 # CMD ["bash","start.sh"]
