@@ -1,15 +1,32 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-python
+FROM balenalib/raspberry-pi-alpine-python
 
-#switch on systemd init system in container
-ENV INITSYSTEM on
+RUN cd /tmp
+RUN git clone https://github.com/pageauc/speed-camera.git
 
-# pip install python deps from requirements.txt
-# For caching until requirements.txt changes
-COPY ./requirements.txt /requirements.txt
-RUN READTHEDOCS=True pip install -r /requirements.txt
+RUN cd /tmp/speed-camera
 
-COPY . /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /speed-camera/media
+RUN mkdir -p /speed-camera/plugins
 
-CMD ["bash","start.sh"]
+RUN cp /tmp/speed-camera/config.py /speed-camera/.
+RUN cp /tmp/speed-camera/menubox.sh /speed-camera/.
+RUN cp /tmp/speed-camera/speed-cam.py /speed-camera/.
+RUN cp /tmp/speed-camera/speed-cam.sh /speed-camera/.
+RUN cp /tmp/speed-camera/search-speed.py /speed-camera/.
+RUN cp /tmp/speed-camera/search_config.py /speed-camera/.
+RUN cp /tmp/speed-camera/makehtml.py /speed-camera/.
+RUN cp /tmp/speed-camera/webserver.py /speed-camera/.
+RUN cp /tmp/speed-camera/webserver.sh /speed-camera/.
+RUN cp /tmp/speed-camera/sql_speed_gt.py /speed-camera/.
 
+RUN cp /tmp/speed-camera/webserver.txt /speed-camera/media/.
+
+RUN cp /tmp/speed-camera/plugins/*.py /speed-camera/plugins/.
+
+RUN chmod +x /speed-camera/*.py
+RUN chmod +x /speed-camera/*.sh
+RUN chmod -x /speed-camera/config*
+
+
+
+// CMD ["bash","start.sh"]
