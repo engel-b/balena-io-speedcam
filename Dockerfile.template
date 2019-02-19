@@ -27,17 +27,17 @@ RUN chmod +x /speed-camera/*.py
 RUN chmod +x /speed-camera/*.sh
 RUN chmod -x /speed-camera/config*
 
-RUN apk add python-opencv \
-        dos2unix \
-        python-picamera \
-        python3-picamera \
-        python-imaging \
-        sqlite3 \
-        gnuplot \
-        python-gnuplot \
-        libgl1-mesa-dri \
-        fonts-freefont-ttf \
-        pandoc
+RUN apk add python-opencv
+RUN apk add dos2unix
+RUN apk add python-picamera
+RUN apk add python3-picamera
+RUN apk add python-imaging
+RUN apk add sqlite3
+RUN apk add gnuplot
+RUN apk add python-gnuplot
+RUN apk add libgl1-mesa-dri
+RUN apk add fonts-freefont-ttf
+RUN apk add pandoc
 
 #   sudo apt-get install -yq Gnuplot
 #   sudo apt-get install -yq python-Gnuplot
