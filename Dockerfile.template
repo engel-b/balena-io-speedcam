@@ -38,6 +38,7 @@ RUN apt-get install python-gnuplot
 RUN apt-get install libgl1-mesa-dri
 RUN apt-get install fonts-freefont-ttf
 RUN apt-get install pandoc
+RUN apt-get install -y libraspberrypi-bin
 
 #   sudo apt-get install -yq Gnuplot
 #   sudo apt-get install -yq python-Gnuplot
