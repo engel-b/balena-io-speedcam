@@ -48,6 +48,6 @@ RUN rm -rf /tmp/speed-camera
 COPY start.sh /speed-camera/start.sh
 RUN chmod +x /speed-camera/start.sh
 
-RUN ln -s /speed-camera/ /home/pi/speed-camera
+RUN mkdir /home/pi && ln -s /speed-camera/ /home/pi/speed-camera
 
 CMD ["bash","/speed-camera/start.sh"]
