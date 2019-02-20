@@ -23,6 +23,8 @@ RUN cp /tmp/speed-camera/webserver.txt /speed-camera/media/.
 
 RUN cp /tmp/speed-camera/plugins/*.py /speed-camera/plugins/.
 
+RUN sed -i '/\/home\/pi\/speed-camera/c\\/speed-camera' /speed-camera/speed-cam.sh
+
 RUN chmod +x /speed-camera/*.py
 RUN chmod +x /speed-camera/*.sh
 RUN chmod -x /speed-camera/config*
