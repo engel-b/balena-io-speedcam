@@ -4,6 +4,8 @@ RUN mkdir /home/pi && mkdir /speed-camera && ln -s /speed-camera/ /home/pi/speed
 
 RUN apt-get update
 
+RUN curl -L https://raw.github.com/pageauc/speed-camera/master/speed-install.sh | bash
+
 RUN sed -i "s|CAMERA_ROTATION.*|CAMERA_ROTATION = 180 |g" /home/pi/speed-camera/config.py
 
 COPY run.sh /run.sh
