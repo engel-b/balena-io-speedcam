@@ -5,8 +5,8 @@ RUN apt-get update && apt-get install curl wget unzip
 WORKDIR "~"
 RUN curl -L https://raw.github.com/pageauc/speed-camera/master/speed-install.sh | bash
 
-RUN sed -i 's/progpath=.*/progpath=\"/root/speed-camera\"/g' ~/speed-camera/speed-cam.sh
-RUN sed -i 's/progpath=.*/progpath=\"/root/speed-camera\"/g' ~/speed-camera/webserver.sh
+RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/speed-cam.sh
+RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/webserver.sh
 RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" ~/speed-camera/config.py
 
 COPY run.sh /run.sh
