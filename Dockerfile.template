@@ -7,9 +7,9 @@ RUN curl -L https://raw.github.com/pageauc/speed-camera/master/speed-install.sh 
 
 #RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/speed-cam.sh
 #RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/webserver.sh
-RUN sed -i "s/\/home\/pi/\/root/g" ~/speed-camera/*.*
-RUN sed -i "s/\/home\/pi/\/root/g" ~/speed-camera/*.*
 RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" ~/speed-camera/config.py
+
+RUN mkdir -p /home/pi && ln -s /root/speed-camera/ /home/pi/speed-camera
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
