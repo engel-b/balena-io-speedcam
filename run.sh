@@ -1,19 +1,19 @@
 #!/bin/bash
 
 # Start the first process
-/home/pi/speed-camera/speed-cam.sh start > /dev/null
+/root/speed-camera/speed-cam.sh start > /dev/null
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start speed-cam: $status"
-#  exit $status
+  exit $status
 fi
 
 # Start the second process
-/home/pi/speed-camera/webserver.sh start > /dev/null
+/root/speed-camera/webserver.sh start > /dev/null
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start webserver: $status"
-#  exit $status
+  exit $status
 fi
 
 # Naive check runs checks once a minute to see if either of the processes exited.
@@ -40,6 +40,6 @@ while sleep 60; do
   fi
   if [ $exitAll -ne 0 ]; then
     echo "One of the processes has already exited."
-#    exit 1
+    exit 1
   fi
 done
