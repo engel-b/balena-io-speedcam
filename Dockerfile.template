@@ -9,7 +9,7 @@ RUN curl -L https://raw.github.com/pageauc/speed-camera/master/speed-install.sh 
 
 #RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" /home/pi/speed-camera/config.py
 
-RUN ln -s /speed-camera/ /home/pi/speed-camera
+RUN ln -s /home/pi/speed-camera/ /speed-camera
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
