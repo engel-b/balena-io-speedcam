@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start the first process
-/root/speed-camera/speed-cam.sh start > /dev/null
+/home/pi/speed-camera/speed-cam.sh start > /dev/null
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start speed-cam: $status"
@@ -9,7 +9,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-/root/speed-camera/webserver.sh start > /dev/null
+/home/pi/speed-camera/webserver.sh start > /dev/null
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start webserver: $status"
