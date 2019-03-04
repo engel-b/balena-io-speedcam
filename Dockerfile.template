@@ -1,54 +1,13 @@
 FROM balenalib/raspberry-pi-debian-python
 
+RUN mkdir /home/pi && mkdir /speed-camera && ln -s /speed-camera/ /home/pi/speed-camera
+
 RUN apt-get update
-RUN apt-get install git
 
-RUN git clone https://github.com/pageauc/speed-camera.git /tmp/speed-camera
+RUN sed -i "s|CAMERA_ROTATION.*|CAMERA_ROTATION = 180 |g" /home/pi/speed-camera/config.py
 
-RUN mkdir -p /speed-camera/media
-RUN mkdir -p /speed-camera/plugins
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
-RUN cp /tmp/speed-camera/config.py /speed-camera/.
-RUN cp /tmp/speed-camera/menubox.sh /speed-camera/.
-RUN cp /tmp/speed-camera/speed-cam.py /speed-camera/.
-RUN cp /tmp/speed-camera/speed-cam.sh /speed-camera/.
-RUN cp /tmp/speed-camera/search-speed.py /speed-camera/.
-RUN cp /tmp/speed-camera/search_config.py /speed-camera/.
-RUN cp /tmp/speed-camera/makehtml.py /speed-camera/.
-RUN cp /tmp/speed-camera/webserver.py /speed-camera/.
-RUN cp /tmp/speed-camera/webserver.sh /speed-camera/.
-RUN cp /tmp/speed-camera/sql_speed_gt.py /speed-camera/.
 
-RUN cp /tmp/speed-camera/webserver.txt /speed-camera/media/.
-
-RUN cp /tmp/speed-camera/plugins/*.py /speed-camera/plugins/.
-
-RUN chmod +x /speed-camera/*.py
-RUN chmod +x /speed-camera/*.sh
-RUN chmod -x /speed-camera/config*
-
-RUN apt-get install python-opencv
-RUN apt-get install dos2unix
-RUN apt-get install python-picamera
-RUN apt-get install python3-picamera
-RUN apt-get install python-imaging
-RUN apt-get install sqlite3
-RUN apt-get install gnuplot
-RUN apt-get install python-gnuplot
-RUN apt-get install libgl1-mesa-dri
-RUN apt-get install fonts-freefont-ttf
-RUN apt-get install pandoc
-RUN apt-get install -y libraspberrypi-bin
-
-#   sudo apt-get install -yq Gnuplot
-#   sudo apt-get install -yq python-Gnuplot
-
-RUN dos2unix -q /speed-camera/*
-RUN rm -rf /tmp/speed-camera
-
-COPY start.sh /speed-camera/start.sh
-RUN chmod +x /speed-camera/start.sh
-
-RUN mkdir /home/pi && ln -s /speed-camera/ /home/pi/speed-camera
-
-CMD ["bash","/speed-camera/start.sh"]
+CMD ["bash","/run.sh"]
