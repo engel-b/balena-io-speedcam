@@ -1,6 +1,6 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN mkdir /home/pi && mkdir /speed-camera
+RUN mkdir /home/pi
 
 RUN apt-get update
 
