@@ -3,7 +3,7 @@ FROM balenalib/raspberry-pi-debian-python
 RUN apt-get update && apt-get install curl wget unzip
 
 RUN adduser pi
-RUN "pi ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "pi ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 COPY run.sh /run.sh
 RUN chmod 555 /run.sh
