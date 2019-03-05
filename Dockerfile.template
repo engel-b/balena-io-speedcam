@@ -60,7 +60,7 @@ RUN dos2unix -q /home/pi/speed-camera/*
 COPY run.sh /run.sh
 RUN chmod 555 /run.sh
 
-RUN chmod 777 /dev/vchiq
+RUN chmod 555 /dev/vchiq
 
 USER pi
 
