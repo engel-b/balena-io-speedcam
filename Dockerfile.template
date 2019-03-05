@@ -44,18 +44,16 @@ RUN wget -O media/webserver.txt -q https://raw.github.com/pageauc/speed-camera/m
 USER root
 
 # rclone
-RUN wget -O rclone.zip -q https://downloads.rclone.org/rclone-current-linux-arm.zip; \
-    unzip -o -j -d rclone-tmp rclone.zip; \
-    cd rclone-tmp; \
-    cp rclone /usr/bin/; \
+RUN wget -O /tmp/rclone.zip -q https://downloads.rclone.org/rclone-current-linux-arm.zip; \
+    unzip -o -j -d /tmp/rclone-tmp /tmp/rclone.zip; \
+    cp /tmp/rclone-tmp/rclone /usr/bin/; \
     chown root:root /usr/bin/rclone; \
     chmod 555 /usr/bin/rclone; \
     mkdir -p /usr/local/share/man/man1; \
-    cp rclone.1 /usr/local/share/man/man1/; \
+    cp /tmp/rclone-tmp/rclone.1 /usr/local/share/man/man1/; \
     mandb; \
-    cd ..; \
-    rm rclone.zip; \
-    rm -r rclone-tmp
+    rm /tmp/rclone.zip; \
+    rm -r /tmp/rclone-tmp
 
 RUN chmod +x *.py && chmod +x *.sh && chmod -x config*
 RUN dos2unix -q /home/pi/speed-camera/*
