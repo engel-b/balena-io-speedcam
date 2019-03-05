@@ -11,7 +11,7 @@ RUN apt-get --update install -y bash \
                          fonts-freefont-ttf \
                          pandoc \
                          gnuplot \
-                         python-gnuplot
+                         python-gnuplot \
                          libraspberrypi-bin
 # python3-picamera
 
