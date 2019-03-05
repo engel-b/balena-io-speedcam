@@ -60,9 +60,8 @@ RUN dos2unix -q /home/pi/speed-camera/*
 COPY run.sh /run.sh
 RUN chmod 555 /run.sh
 
-RUN chmod 555 /dev/vchiq
 
-USER pi
+#USER pi
 
 RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" /home/pi/speed-camera/config.py
 
