@@ -1,6 +1,6 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN useradd pi
+RUN useradd -m pi
 
 RUN apt-get update && \
     apt-get install -y   bash \
@@ -16,7 +16,8 @@ RUN apt-get update && \
                          pandoc \
                          gnuplot \
                          python-gnuplot \
-                         libraspberrypi-bin
+                         libraspberrypi-bin \
+                         openssh-server
 
 USER pi
 
