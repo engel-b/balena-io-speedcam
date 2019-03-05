@@ -40,6 +40,6 @@ while sleep 60; do
   fi
   if [ $exitAll -ne 0 ]; then
     echo "One of the processes has already exited."
-    exit 1
+#    exit 1
   fi
 done
