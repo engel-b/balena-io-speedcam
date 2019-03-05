@@ -1,5 +1,7 @@
 FROM balenalib/raspberry-pi-debian-python
 
+RUN useradd pi
+
 RUN apt-get update && \
     apt-get install -y   bash \
                          wget \
@@ -15,8 +17,6 @@ RUN apt-get update && \
                          gnuplot \
                          python-gnuplot \
                          libraspberrypi-bin
-
-RUN useradd pi
 
 USER pi
 
