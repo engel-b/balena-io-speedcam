@@ -6,6 +6,7 @@ RUN apt-get update && \
                          python-opencv \
                          dos2unix \
                          python-picamera \
+                         python3-picamera \
                          python-imaging \
                          sqlite3 \
                          libgl1-mesa-dri \
@@ -14,7 +15,6 @@ RUN apt-get update && \
                          gnuplot \
                          python-gnuplot \
                          libraspberrypi-bin
-# python3-picamera
 
 RUN useradd pi
 
