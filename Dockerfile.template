@@ -42,6 +42,21 @@ RUN for fname in  "config.py" \
 RUN wget -O media/webserver.txt -q https://raw.github.com/pageauc/speed-camera/master/webserver.txt
 
 USER root
+
+# rclone
+RUN wget -O rclone.zip -q https://downloads.rclone.org/rclone-current-linux-arm.zip; \
+    unzip -o -j -d rclone-tmp rclone.zip; \
+    cd rclone-tmp; \
+    cp rclone /usr/bin/; \
+    chown root:root /usr/bin/rclone; \
+    chmod 555 /usr/bin/rclone; \
+    mkdir -p /usr/local/share/man/man1; \
+    cp rclone.1 /usr/local/share/man/man1/; \
+    mandb; \
+    cd ..; \
+    rm rclone.zip; \
+    rm -r rclone-tmp
+
 RUN chmod +x *.py && chmod +x *.sh && chmod -x config*
 RUN dos2unix -q /home/pi/speed-camera/*
 
@@ -51,7 +66,5 @@ RUN chmod 555 /run.sh
 USER pi
 
 RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" /home/pi/speed-camera/config.py
-
-USER root
 
 CMD ["bash","/run.sh"]
