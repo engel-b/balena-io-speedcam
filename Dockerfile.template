@@ -9,13 +9,10 @@ RUN chmod 555 /run.sh
 
 USER pi
 
-WORKDIR "~"
 RUN curl -L https://raw.github.com/pageauc/speed-camera/master/speed-install.sh | bash
 
 #RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/speed-cam.sh
 #RUN sed -i "s/progpath=.*/progpath=\"/root/speed-camera\"/g" ~/speed-camera/webserver.sh
 RUN sed -i "s/CAMERA_ROTATION.*/CAMERA_ROTATION = 180/g" ~/speed-camera/config.py
-
-USER root
 
 CMD ["bash","/run.sh"]
