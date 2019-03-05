@@ -1,6 +1,6 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN apk --update install bash \
+RUN apt-get --update install -y bash \
                          wget \
                          python-opencv \
                          dos2unix \
@@ -12,6 +12,7 @@ RUN apk --update install bash \
                          pandoc \
                          gnuplot \
                          python-gnuplot
+                         libraspberrypi-bin
 # python3-picamera
 
 RUN useradd pi
