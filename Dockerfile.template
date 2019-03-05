@@ -1,6 +1,7 @@
 FROM balenalib/raspberry-pi-debian-python
 
 RUN useradd -m pi
+RUN usermod -a -G video pi
 
 RUN apt-get update && \
     apt-get install -y   bash \
