@@ -1,6 +1,7 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN apt-get --update install -y bash \
+RUN apt-get update && \
+    apt-get install -y   bash \
                          wget \
                          python-opencv \
                          dos2unix \
