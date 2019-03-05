@@ -17,7 +17,8 @@ RUN apt-get update && \
                          gnuplot \
                          python-gnuplot \
                          libraspberrypi-bin \
-                         openssh-server
+                         openssh-server \
+                         unzip
 
 USER pi
 
