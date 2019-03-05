@@ -1,17 +1,17 @@
-FROM balenalib/raspberry-pi-alpine-python
+FROM balenalib/raspberry-pi-debian-python
 
-RUN apk --update add  bash \
-                      wget \
-                      python-opencv \
-                      dos2unix \
-                      python-picamera \
-                      python-imaging \
-                      sqlite3 \
-                      libgl1-mesa-dri \
-                      fonts-freefont-ttf \
-                      pandoc \
-                      gnuplot \
-                      python-gnuplot
+RUN apk --update install bash \
+                         wget \
+                         python-opencv \
+                         dos2unix \
+                         python-picamera \
+                         python-imaging \
+                         sqlite3 \
+                         libgl1-mesa-dri \
+                         fonts-freefont-ttf \
+                         pandoc \
+                         gnuplot \
+                         python-gnuplot
 # python3-picamera
 
 RUN useradd pi
