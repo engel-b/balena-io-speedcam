@@ -43,6 +43,7 @@ RUN for fname in  "config.py" \
         wget -O $fname -q https://raw.github.com/pageauc/speed-camera/master/$fname; \
     done
 RUN wget -O media/webserver.txt -q https://raw.github.com/pageauc/speed-camera/master/webserver.txt
+RUN wget -O plugins/__init__.py -q https://raw.github.com/pageauc/speed-camera/master/plugins/__init__.py
 
 COPY picam.py /home/pi/speed-camera/plugins/picam.py
 
@@ -67,6 +68,6 @@ RUN chmod 555 /run.sh
 #USER pi
 
 RUN sed -i "s/pluginEnable.*/pluginEnable = True/g" /home/pi/speed-camera/config.py
-RUN sed -i "s/pluginName.*/pluginName = picam/g" /home/pi/speed-camera/config.py
+RUN sed -i "s/pluginName.*/pluginName = \"picam\"/g" /home/pi/speed-camera/config.py
 
 CMD ["bash","/run.sh"]
