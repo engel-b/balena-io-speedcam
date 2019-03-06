@@ -7,8 +7,8 @@
 
 # Calibration Settings
 # --------------------
-cal_obj_px = 180       # Length of a calibration object in pixels
-cal_obj_mm = 4330.0    # Length of the calibration object in millimetres. (longer is faster)
+cal_obj_px = 193       # Length of a calibration object in pixels
+cal_obj_mm = 4407.0    # Length of the calibration object in millimetres. (longer is faster)
 # Note if tested speed is too low increase cal_obj_mm  value and redo speed test.
 # IMPORTANT - If plugins NOT enabled in config.py then Edit config.py settings.
 
