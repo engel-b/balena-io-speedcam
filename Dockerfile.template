@@ -1,6 +1,6 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN useradd -m pi
+RUN useradd -m pi -p speedcam
 RUN usermod -a -G video pi
 
 RUN apt-get update && \
@@ -46,6 +46,7 @@ RUN wget -O media/webserver.txt -q https://raw.github.com/pageauc/speed-camera/m
 RUN wget -O plugins/__init__.py -q https://raw.github.com/pageauc/speed-camera/master/plugins/__init__.py
 
 COPY picam.py /home/pi/speed-camera/plugins/picam.py
+COPY rclone.conf /home/pi/.config/rclone/rclone.conf
 
 USER root
 

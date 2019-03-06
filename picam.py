@@ -7,6 +7,7 @@
 
 # Calibration Settings
 # --------------------
+calibrate = False
 cal_obj_px = 193       # Length of a calibration object in pixels
 cal_obj_mm = 4407.0    # Length of the calibration object in millimetres. (longer is faster)
 # Note if tested speed is too low increase cal_obj_mm  value and redo speed test.
@@ -14,18 +15,18 @@ cal_obj_mm = 4407.0    # Length of the calibration object in millimetres. (longe
 
 # Crop Area for motion detection Tracking
 # ---------------------------------------
-x_left  = 50           # Default= 150 Exclude event if x less than this px position
+x_left  = 30           # Default= 150 Exclude event if x less than this px position
 x_right = 590          # Default= 490 Exclude event if x greater than this px position
 y_upper = 140          # Default= 140 Exclude event if y less that this value
-y_lower = 270          # Default= 340 Exclude event if y greater than this value
+y_lower = 280          # Default= 340 Exclude event if y greater than this value
 
 # Motion Event Settings
 # ---------------------
 SPEED_MPH = False      # Set the speed conversion  kph=False  mph=True
-MIN_AREA = 100         # Default= 100 Exclude all contours less than or equal to this sq-px Area
+MIN_AREA = 450         # Default= 100 Exclude all contours less than or equal to this sq-px Area
 x_diff_max = 200       # Default= 200 Exclude if max px away >= last motion event x pos
 x_diff_min = 1         # Default= 1  Exclude if min px away <= last event x pos
-track_timeout = 0.0    # Default= 0.0 Optional seconds to wait after track End (Avoid dual tracking)
+track_timeout = 1.0    # Default= 0.0 Optional seconds to wait after track End (Avoid dual tracking)
 event_timeout = 0.4    # Default= 0.4 seconds to wait for next motion event before starting new track
 log_data_to_CSV = True # Default= True True= Save log data as CSV comma separated values
 
@@ -42,7 +43,7 @@ CAMERA_ROTATION = 180  # Rotate camera image valid values are 0, 90, 180, 270
 
 # Camera Image Settings
 # ---------------------
-image_bigger = 1     # Default= 1.5 Resize saved speed image by value
+image_bigger = 1.5     # Default= 1.5 Resize saved speed image by value
 image_font_size = 16   # Default= 18 Font text height in px for text on images
 
 # ---------------------------------------------- End of User Variables -----------------------------------------------------
