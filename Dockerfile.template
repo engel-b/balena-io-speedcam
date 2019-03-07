@@ -71,4 +71,9 @@ RUN chmod 555 /run.sh
 RUN sed -i "s/pluginEnable.*/pluginEnable = True/g" /home/pi/speed-camera/config.py
 RUN sed -i "s/pluginName.*/pluginName = \"picam\"/g" /home/pi/speed-camera/config.py
 
+RUN sed -i "s/lockFileCheck=.*/lockFileCheck=true/g" /home/pi/speed-camera/rclone-security-sync-recent.sh
+RUN sed -i "s/rcloneName=.*/rcloneName=\"gdrive\"/g" /home/pi/speed-camera/rclone-security-sync-recent.sh
+RUN sed -i "s/rcloneParam=.*/rcloneParam=\"move\"/g" /home/pi/speed-camera/rclone-security-sync-recent.sh
+RUN sed -i "s/pi-timolo\/pi-timolo.sync/rclone.sync/g" /home/pi/speed-camera/rclone-security-sync-recent.sh
+
 CMD ["bash","/run.sh"]

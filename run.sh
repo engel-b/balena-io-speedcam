@@ -42,4 +42,5 @@ while sleep 60; do
     echo "One of the processes has already exited."
 #    exit 1
   fi
+  /home/pi/speed-camera/rclone-security-sync-recent.sh
 done
