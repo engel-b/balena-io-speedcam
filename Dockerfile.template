@@ -1,6 +1,9 @@
 FROM balenalib/raspberry-pi-debian-python
 
-RUN useradd -m pi -p speedcam
+# Enable the v4l2 driver for the Raspberry Pi camera
+RUN printf "bcm2835-v4l2\n" >> /etc/modules
+
+RUN useradd -m pi
 RUN usermod -a -G video pi
 
 RUN apt-get update && \
@@ -51,7 +54,7 @@ COPY rclone.conf /home/pi/.config/rclone/rclone.conf
 RUN sed -i "s/pluginEnable.*/pluginEnable = True/g" /home/pi/speed-camera/config.py
 RUN sed -i "s/pluginName.*/pluginName = \"picam\"/g" /home/pi/speed-camera/config.py
 
-RUN ln -s /data/ /home/pi/speedcam/data
+RUN ln -s /data/ /home/pi/speed-camera/data
 
 USER root
 
