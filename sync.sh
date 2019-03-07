@@ -4,11 +4,7 @@ progName=$(basename -- "$0")
 lockFileCheck=false      # true= Checks for pi-timolo.sync file. false = No Check (case sensitive)
 rcloneName="gdrive"     # Name of Remote Storage Service
 syncRoot="/home/pi/speed-camera"   # Root Folder to Start
-localDir="media"         # Source Folder on Local
-remoteDir="speedcam"     # Destination Folder on Remote
 rcloneParam="move -L"    # rclone option to perform  Eg  sync, copy, move
-                         # IMPORTANT: sync will make remoteDir identical to localDir
-                         # so remoteDir Files that do not exist on localDir will be Deleted.
 
 
 # Display Users Settings
@@ -16,8 +12,6 @@ echo "----------- SETTINGS -------------
 lockFileCheck : $lockFileCheck
 rcloneName    : $rcloneName
 syncRoot      : $syncRoot
-localDir      : $localDir
-remoteDir     : $remoteDir
 rcloneParam   : $rcloneParam   (Options are sync, copy or move)
 ---------------------------------"
 
@@ -34,13 +28,15 @@ if [ $? == 0 ]; then    # Check if listremotes found anything
         else
             echo "INFO  : Lock File Not Found: $lockFilePath"
             echo "        rclone $rcloneParam is Not Required."
-            echo "Exiting $progName ver $ver"
+            echo "Exiting sync"
             exit 0
         fi
     fi
 
-    echo "INFO  : /usr/bin/rclone $rcloneParam -v $localDir $rcloneName:$remoteDir"
-    /usr/bin/rclone $rcloneParam -v $localDir $rcloneName:$remoteDir
+    echo "INFO  : /usr/bin/rclone $rcloneParam -v media/recent $rcloneName:speedcam/recent"
+    /usr/bin/rclone $rcloneParam -v media/recent $rcloneName:speedcam/recent
+    echo "INFO  : /usr/bin/rclone $rcloneParam -v media/images $rcloneName:speedcam/images"
+    /usr/bin/rclone $rcloneParam -v media/images $rcloneName:speedcam/images
 
     if [ ! $? -eq 0 ]; then
         echo "---------------------------------------------------"
