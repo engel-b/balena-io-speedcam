@@ -73,6 +73,8 @@ RUN dos2unix -q /home/pi/speed-camera/*
 COPY run.sh /run.sh
 RUN chmod 555 /run.sh
 
+RUN echo "pi ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
 USER pi
 
 CMD ["bash","/run.sh"]
