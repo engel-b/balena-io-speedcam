@@ -51,7 +51,7 @@ COPY rclone.conf /home/pi/.config/rclone/rclone.conf
 RUN sed -i "s/pluginEnable.*/pluginEnable = True/g" /home/pi/speed-camera/config.py
 RUN sed -i "s/pluginName.*/pluginName = \"picam\"/g" /home/pi/speed-camera/config.py
 
-RUN ln -s /data /home/pi/speedcam/data
+RUN ln -s /data/ /home/pi/speedcam/data
 
 USER root
 
