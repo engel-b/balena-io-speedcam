@@ -51,6 +51,8 @@ COPY rclone.conf /home/pi/.config/rclone/rclone.conf
 RUN sed -i "s/pluginEnable.*/pluginEnable = True/g" /home/pi/speed-camera/config.py
 RUN sed -i "s/pluginName.*/pluginName = \"picam\"/g" /home/pi/speed-camera/config.py
 
+RUN ln -s /data /home/pi/speedcam/data
+
 USER root
 
 # rclone
@@ -67,7 +69,6 @@ RUN dos2unix -q /home/pi/speed-camera/*
 
 COPY run.sh /run.sh
 RUN chmod 555 /run.sh
-
 
 USER pi
 
