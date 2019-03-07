@@ -22,7 +22,8 @@ fi
 # if it detects that either of the processes has exited.
 # Otherwise it loops forever, waking up every 60 seconds
 
-while sleep 60; do
+while sleep 300; do
+  /home/pi/speed-camera/sync.sh
   exitAll=0
   ps aux |grep speed-cam |grep -q -v grep
   PROCESS_1_STATUS=$?
@@ -40,7 +41,6 @@ while sleep 60; do
   fi
   if [ $exitAll -ne 0 ]; then
     echo "One of the processes has already exited."
-#    exit 1
+    exit 1
   fi
-  /home/pi/speed-camera/sync.sh
 done
