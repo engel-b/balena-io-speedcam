@@ -5,7 +5,7 @@ if [ -n "${SSH_PUBLIC_KEY}" ]
 then
   mkdir -p ~/.ssh
   chmod 600 ~/.ssh
-  cat ${SSH_PUBLIC_KEY} >  ~/.ssh/authorized_keys
+  echo ${SSH_PUBLIC_KEY} >  ~/.ssh/authorized_keys
 fi
 
 # set timezone with TZ (eg. TZ=EUROPE/Berlin)
