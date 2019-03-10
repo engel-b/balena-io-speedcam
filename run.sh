@@ -3,7 +3,7 @@
 /base_config.sh
 
 # set token to rclone-config
-if [[ -n "${RCLONE_TOKEN}" ] && [ ! -f "/root/.config/rclone/rclone.conf" ]]
+if [ -n "${RCLONE_TOKEN}" ] && [ ! -f "/root/.config/rclone/rclone.conf" ]
 then
   sed -i "s@*@${RCLONE_TOKEN}@g" /root/.config/rclone/rclone.conf
 fi
