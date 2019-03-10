@@ -60,7 +60,8 @@ RUN rm -r /tmp/rclone-tmp
 RUN chmod +x *.py && chmod +x *.sh && chmod -x config*
 RUN dos2unix -q /home/pi/speed-camera/*
 
+COPY base_config.sh /base_config.sh
 COPY run.sh /run.sh
-RUN chmod 555 /run.sh
+RUN chmod 555 /*.sh
 
 CMD ["bash","/run.sh"]

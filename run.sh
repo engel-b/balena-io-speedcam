@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/base_config.sh
+
 # Start the first process
 /home/pi/speed-camera/speed-cam.sh start > /dev/null
 status=$?
