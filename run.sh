@@ -2,6 +2,12 @@
 
 /base_config.sh
 
+# set token to rclone-config
+if [ -n "${RCLONE_TOKEN}" && ! -f "~/.config/rclone/rclone.conf" ]
+then
+  sed -i "s/*/${RCLONE_TOKEN}/g" ~/.config/rclone/rclone.conf
+fi
+
 # Start the first process
 /home/pi/speed-camera/speed-cam.sh start > /dev/null
 status=$?
